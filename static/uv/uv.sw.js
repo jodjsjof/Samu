@@ -42,14 +42,6 @@ class UVServiceWorker extends EventEmitter {
                 204,
                 304,
             ],
-        };  
-        this.config = config;
-        this.browser = Ultraviolet.Bowser.getParser(self.navigator.userAgent).getBrowserName();
-
-        if (this.browser === 'Firefox') {
-            this.headers.forward.push('user-agent');
-            this.headers.forward.push('content-type');
-        };
     };
     async fetch({ request }) {
         if (!request.url.startsWith(location.origin + (this.config.prefix || '/service/'))) {
